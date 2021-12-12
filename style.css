@@ -25,6 +25,9 @@ ul,
 ol {
   list-style: none;
 }
+button {
+  cursor: pointer;
+}
 
 #app {
   width: 100%;
@@ -81,9 +84,11 @@ ol {
   border-radius: 5px;
   background: white;
   padding: 10px 0;
+  display: none;
 }
-.add-item li {
+.add-item li button {
   padding: 8px 16px;
+  color: #222222;
 }
 .add-item li:hover {
   background: #ececec;
@@ -103,6 +108,7 @@ ol {
   min-height: var(--line-height);
   line-height: var(--line-height);
   padding: var(--item-padding);
+  cursor: text;
 }
 [placeholder]:empty::before {
   content: attr(placeholder);
