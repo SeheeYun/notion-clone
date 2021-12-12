@@ -1,5 +1,9 @@
 :root {
-  --padding: 13px;
+  --header-padding: 13px;
+  --item-padding: 6px;
+  --line-height: 1.2rem;
+  --light-gray-color: #bbbbbb;
+  --gray-color: #37352f99;
 }
 * {
   margin: 0;
@@ -10,6 +14,8 @@ html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, sans-serif;
+  font-size: 16px;
+  color: #222222;
 }
 a {
   color: inherit;
@@ -18,10 +24,6 @@ a {
 ul,
 ol {
   list-style: none;
-}
-input {
-  width: 100%;
-  border: none;
 }
 
 #app {
@@ -37,17 +39,75 @@ input {
   width: 200px;
   border-right: 1px solid #d1d1d1;
 }
+.sidebar {
+  padding: var(--header-padding);
+}
 
 .header {
+  width: 100%;
   height: 46px;
-  padding: var(--padding);
+  padding: var(--header-padding);
 }
 
 .main-container {
-  display: flex;
-  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .main {
+  max-width: 600px;
   width: 100%;
+  padding: 0 60px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.add-item {
+  width: 200px;
+  font-family: inherit;
+  font-size: 14px;
+}
+.add-item button {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: start;
+  padding: var(--item-padding);
+  color: var(--gray-color);
+}
+.add-item ul {
+  width: 100%;
+  box-shadow: rgb(15 15 15 / 5%) 0px 0px 0px 1px,
+    rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px;
+  border-radius: 5px;
+  background: white;
+  padding: 10px 0;
+}
+.add-item li {
+  padding: 8px 16px;
+}
+.add-item li:hover {
+  background: #ececec;
+}
+
+/* items */
+.text.title {
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: 40px;
+}
+.text {
+  width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  outline: none;
+  min-height: var(--line-height);
+  line-height: var(--line-height);
+  padding: var(--item-padding);
+}
+[placeholder]:empty::before {
+  content: attr(placeholder);
+  color: var(--light-gray-color);
+}
+[placeholder]:empty:focus::before {
+  content: '';
 }

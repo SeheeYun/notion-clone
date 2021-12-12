@@ -12,22 +12,36 @@
     <div id="app">
       <div class="sidebar-container">
         <div class="header">세희 윤의 Notion</div>
-        <div class="sidebar">+ 페이지 추가</div>
+        <div class="sidebar">
+          <div class="add-item"><button>+ 페이지 추가</button></div>
+        </div>
       </div>
       <div class="main-container">
         <div class="header">TypeScript</div>
-      </div>
-      <div class="main">
-        <h1 class="main-title"><div>TypeScript</div></h1>
-        <div><input type="text" placeholder="텍스트를 입력하세요." /></div>
-        <div class="add-item">
-          <button>+ 아이템 추가하기</button>
-          <ul>
-            <li>텍스트</li>
-            <li>할 일 목록</li>
-            <li>이미지</li>
-            <li>동영상</li>
-          </ul>
+        <div class="main">
+          <div
+            class="text title"
+            contenteditable="true"
+            placeholder="제목 없음"
+            spellcheck="true"
+          ></div>
+          <div>
+            <div
+              class="text"
+              contenteditable="true"
+              placeholder="여기에 글자를 입력해주세요."
+              spellcheck="true"
+            ></div>
+          </div>
+          <div class="add-item">
+            <button>+ 아이템 추가하기</button>
+            <ul>
+              <li>텍스트</li>
+              <li>할 일 목록</li>
+              <li>이미지</li>
+              <li>동영상</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
