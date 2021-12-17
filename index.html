@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notion</title>
     <link rel="stylesheet" href="./style/style.css" />
-    <script src="./build/main.js" defer></script>
+    <script type="module" src="./build/app.js" defer></script>
   </head>
   <body>
     <div id="app">
@@ -16,34 +16,39 @@
           <div class="add-item"><button>+ 페이지 추가</button></div>
         </div>
       </div>
-      <div class="main-container">
+      <main class="page-container">
         <div class="header">TypeScript</div>
-        <div class="main">
+        <div class="page">
           <div
             class="text title"
             contenteditable="true"
             placeholder="제목 없음"
             spellcheck="true"
           ></div>
-          <div>
-            <div
+          <!-- <ul class="items">
+            <li
               class="text"
               contenteditable="true"
               placeholder="여기에 글자를 입력해주세요."
               spellcheck="true"
-            ></div>
-          </div>
+            ></li>
+            <li class="image">
+              <div>
+                <img src="" alt="" />
+              </div>
+            </li>
+          </ul> -->
           <div class="add-item">
             <button class="add-btn">+ 아이템 추가하기</button>
             <ul class="add-ul">
-              <li><button>텍스트</button></li>
-              <li><button>할 일 목록</button></li>
-              <li><button>이미지</button></li>
-              <li><button>동영상</button></li>
+              <li><button id="new-text">텍스트</button></li>
+              <li><button id="new-todo">할 일 목록</button></li>
+              <li><button id="new-image">이미지</button></li>
+              <li><button id="new-video">동영상</button></li>
             </ul>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   </body>
 </html>
