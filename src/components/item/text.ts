@@ -1,6 +1,6 @@
 import { BaseComponentImpl } from '../baseComponent.js';
 
-export default class TextItem extends BaseComponentImpl<HTMLDivElement> {
+export default class TextItem extends BaseComponentImpl<HTMLElement> {
   constructor() {
     super(`<li>
     <div

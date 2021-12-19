@@ -1,6 +1,6 @@
 import { BaseComponentImpl } from '../baseComponent.js';
 
-export default class ImageItem extends BaseComponentImpl<HTMLImageElement> {
+export default class ImageItem extends BaseComponentImpl<HTMLElement> {
   constructor(src: string) {
     super(`<li>
       <div class="image">
@@ -8,7 +8,7 @@ export default class ImageItem extends BaseComponentImpl<HTMLImageElement> {
       </div>
     </li>`);
 
-    const img = this.element.querySelector('.image img')! as HTMLImageElement;
+    const img = this.element.querySelector('.image>img')! as HTMLImageElement;
     img.src = src;
     img.alt = src;
   }
