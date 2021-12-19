@@ -1,6 +1,6 @@
-import BaseComponent from '../baseComponent.js';
+import { BaseComponentImpl } from '../baseComponent.js';
 
-export default class ImageItem extends BaseComponent {
+export default class ImageItem extends BaseComponentImpl<HTMLImageElement> {
   constructor(src: string) {
     super(`<li>
       <div class="image">
