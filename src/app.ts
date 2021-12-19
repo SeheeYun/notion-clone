@@ -14,7 +14,7 @@ class App {
     image.attachTo(this.page);
     const text = new TextItem();
     text.attachTo(this.page);
-    const video = new VideoItem('https://www.youtube.com/embed/_XulUbBra5M');
+    const video = new VideoItem('https://www.youtube.com/watch?v=FvJABIYCFQY');
     video.attachTo(this.page);
     const todo = new TodoItem('강의 완강하기');
     todo.attachTo(this.page);
