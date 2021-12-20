@@ -75,7 +75,8 @@ button {
   background: none;
   border: none;
   text-align: start;
-  padding: var(--item-padding);
+  padding-top: var(--item-padding);
+  padding-bottom: var(--item-padding);
   color: var(--gray-color);
 }
 .add-item ul {
@@ -96,6 +97,27 @@ button {
 }
 
 /* items */
+.item {
+  position: relative;
+  padding-top: var(--item-padding);
+  padding-bottom: var(--item-padding);
+  margin-bottom: 4px;
+}
+.delete-button {
+  position: absolute;
+  left: -30px;
+  top: 0px;
+  padding: 6px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  color: var(--light-gray-color);
+  opacity: 0;
+}
+.item:hover .delete-button {
+  opacity: 1;
+}
+
 .text.title {
   font-weight: 700;
   line-height: 1.2;
@@ -108,7 +130,6 @@ button {
   outline: none;
   min-height: var(--line-height);
   line-height: var(--line-height);
-  padding: var(--item-padding);
   cursor: text;
 }
 [placeholder]:empty::before {

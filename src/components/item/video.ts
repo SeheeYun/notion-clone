@@ -1,8 +1,8 @@
 import { BaseComponentImpl } from '../baseComponent.js';
 
-export default class VideoItem extends BaseComponentImpl<HTMLElement> {
+export class VideoItem extends BaseComponentImpl<HTMLElement> {
   constructor(url: string) {
-    super(`<li>
+    super(`
     <div class="video">
       <iframe
         width="400"
@@ -12,7 +12,7 @@ export default class VideoItem extends BaseComponentImpl<HTMLElement> {
         allowfullscreen
       ></iframe>
     </div>
-  </li>`);
+  `);
 
     const iframe = this.element.querySelector(
       '.video>iframe'
