@@ -1,5 +1,6 @@
 export interface BaseComponent {
-  attachTo(parents: HTMLElement, position?: InsertPosition): void;
+  attachTo(parent: HTMLElement, position?: InsertPosition): void;
+  removeFrom(parent: HTMLElement): void;
 }
 
 export class BaseComponentImpl<T extends HTMLElement> implements BaseComponent {
@@ -10,7 +11,14 @@ export class BaseComponentImpl<T extends HTMLElement> implements BaseComponent {
     this.element = template.content.firstElementChild! as T;
   }
 
-  attachTo(parents: HTMLElement, position: InsertPosition = 'beforeend') {
-    parents.insertAdjacentElement(position, this.element);
+  attachTo(parent: HTMLElement, position: InsertPosition = 'beforeend') {
+    parent.insertAdjacentElement(position, this.element);
+  }
+
+  removeFrom(parent: HTMLElement) {
+    if (parent !== this.element.parentNode) {
+      throw new Error('Parent mismatch.');
+    }
+    parent.removeChild(this.element);
   }
 }
