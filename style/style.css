@@ -39,25 +39,26 @@ button {
   height: 100%;
 }
 
-.sidebar-container {
+.sidebar {
   width: 200px;
   border-right: 1px solid #d1d1d1;
 }
-.sidebar {
+.sidebar__content {
   padding: var(--header-padding);
 }
 
-.header {
+.sidebar__header,
+.main__header {
   width: 100%;
   height: 46px;
   padding: var(--header-padding);
 }
 
-.page-container {
+.main {
   width: 100%;
 }
 
-.page {
+.main__content {
   max-width: 700px;
   width: 100%;
   padding: 0 60px;

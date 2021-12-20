@@ -1,5 +1,9 @@
 import { BaseComponent, BaseComponentImpl } from './baseComponent.js';
 
+export interface Composable {
+  addChild(child: BaseComponent): void;
+}
+
 export class ItemContainer extends BaseComponentImpl<HTMLLIElement> {
   constructor() {
     super(`<li class="item">

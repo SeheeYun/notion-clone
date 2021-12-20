@@ -2,26 +2,25 @@ import { ImageItem } from './components/item/image.js';
 import { TextItem } from './components/item/text.js';
 import { TodoItem } from './components/item/todo.js';
 import { VideoItem } from './components/item/video.js';
-import { ItemContainer, Items } from './components/items.js';
+import { Items } from './components/items.js';
 
 class App {
-  private page;
-  constructor() {
-    this.page = document.querySelector('.page')! as HTMLElement;
-    const items = new Items();
+  private items;
+  constructor(mainRoot: HTMLElement) {
+    this.items = new Items();
 
     const image = new ImageItem('https://picsum.photos/400/250');
     const text = new TextItem();
     const video = new VideoItem('https://www.youtube.com/watch?v=FvJABIYCFQY');
     const todo = new TodoItem('강의 완강하기');
 
-    items.addChild(image);
-    items.addChild(text);
-    items.addChild(video);
-    items.addChild(todo);
+    this.items.addChild(image);
+    this.items.addChild(text);
+    this.items.addChild(video);
+    this.items.addChild(todo);
 
-    items.attachTo(this.page);
+    this.items.attachTo(mainRoot);
   }
 }
 
-new App();
+new App(document.querySelector('.main__content')!);
