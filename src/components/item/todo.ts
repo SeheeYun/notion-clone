@@ -1,17 +1,17 @@
 import { BaseComponentImpl } from '../baseComponent.js';
 
 export class TodoItem extends BaseComponentImpl<HTMLElement> {
-  constructor(textContent: string) {
+  constructor() {
     super(`
     <div class="todo">
       <input type="checkbox" />
-      <label ></label>
+      <label
+      class="label"
+      contenteditable="true"
+      spellcheck="false"
+      placeholder="할 일"
+    ></label>
     </div>
   `);
-
-    const label = this.element.querySelector(
-      '.todo>label'
-    )! as HTMLLabelElement;
-    label.textContent = textContent;
   }
 }

@@ -12,7 +12,7 @@ class App {
     const image = new ImageItem('https://picsum.photos/400/250');
     const text = new TextItem();
     const video = new VideoItem('https://www.youtube.com/watch?v=FvJABIYCFQY');
-    const todo = new TodoItem('강의 완강하기');
+    const todo = new TodoItem();
 
     this.items.addChild(image);
     this.items.addChild(text);

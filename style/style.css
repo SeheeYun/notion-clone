@@ -140,3 +140,11 @@ button {
 [placeholder]:empty:focus::before {
   content: '';
 }
+
+.label {
+  width: 100%;
+  min-height: var(--line-height);
+  line-height: var(--line-height);
+  cursor: text;
+  outline: none;
+}
