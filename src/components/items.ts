@@ -19,11 +19,19 @@ export class ItemContainer extends BaseComponentImpl<HTMLLIElement> {
 export class Items extends BaseComponentImpl<HTMLUListElement> {
   constructor() {
     super(`<ul class="items"></ul>`);
+    this.element.addEventListener('click', e => this.removeItem(e));
   }
 
   addChild(child: BaseComponent) {
     const item = new ItemContainer();
     item.addChild(child);
     item.attachTo(this.element);
+  }
+
+  removeItem(e: Event) {
+    const target = e.target as HTMLElement;
+    if (target.className === 'delete-button') {
+      target.parentElement?.remove();
+    }
   }
 }
