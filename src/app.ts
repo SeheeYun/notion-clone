@@ -2,12 +2,12 @@ import { ImageItem } from './components/item/image.js';
 import { TextItem } from './components/item/text.js';
 import { TodoItem } from './components/item/todo.js';
 import { VideoItem } from './components/item/video.js';
-import { Items } from './components/items.js';
+import { ItemContainerImpl, Items } from './components/items.js';
 
 class App {
   private items;
   constructor(mainRoot: HTMLElement) {
-    this.items = new Items();
+    this.items = new Items(ItemContainerImpl);
 
     const image = new ImageItem('https://picsum.photos/400/250');
     const text = new TextItem();
