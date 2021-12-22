@@ -1,3 +1,4 @@
+import { Dropdown } from './components/dropdown.js';
 import { ImageItem } from './components/item/image.js';
 import { TextItem } from './components/item/text.js';
 import { TodoItem } from './components/item/todo.js';
@@ -8,6 +9,9 @@ class App {
   private items;
   constructor(mainRoot: HTMLElement) {
     this.items = new Items(ItemContainerImpl);
+    this.items.attachTo(mainRoot);
+    const dropdown = new Dropdown();
+    dropdown.attachTo(mainRoot);
 
     const image = new ImageItem('https://picsum.photos/400/250');
     const text = new TextItem();
@@ -18,8 +22,6 @@ class App {
     this.items.addChild(text);
     this.items.addChild(video);
     this.items.addChild(todo);
-
-    this.items.attachTo(mainRoot);
   }
 }
 
