@@ -1,7 +1,6 @@
 import { BaseComponentImpl } from './baseComponent.js';
 import { Dialog } from './dialog/dialog.js';
-
-type DilaogItem = 'new-image' | 'new-video';
+import { ImageDialog } from './dialog/content.js';
 
 export class Dropdown extends BaseComponentImpl<HTMLElement> {
   constructor() {
@@ -31,21 +30,23 @@ export class Dropdown extends BaseComponentImpl<HTMLElement> {
     addBtnList.addEventListener('mousedown', e => this.onClick(e));
   }
 
-  onClick(e: Event) {
+  private onClick(e: Event) {
     const target = e.target as HTMLElement;
     if (target.tagName === 'BUTTON') {
       this.showDialog();
     }
   }
 
-  showDialog() {
+  private showDialog() {
     const app = document.querySelector('#app')! as HTMLDivElement;
     const dialog = new Dialog();
+    const imageDialog = new ImageDialog();
+    dialog.addChild(imageDialog);
     dialog.setOnCancleListener(() => {
       dialog.removeFrom(app);
     });
     dialog.setOnSubmitListener(() => {
-      console.log('submit!');
+      const url = imageDialog.getUrl();
       dialog.removeFrom(app);
     });
     dialog.attachTo(app);

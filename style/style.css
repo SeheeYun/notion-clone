@@ -172,6 +172,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 .dialog {
   width: 300px;
@@ -184,12 +185,13 @@ button {
   flex-direction: column;
   justify-content: space-between;
 }
-.dialog > input {
+.dialog input {
   width: 100%;
   line-height: 2;
   outline: none;
   border: none;
   border-bottom: 2px solid var(--primary-color);
+  margin-top: 20px;
 }
 .dialog__btns {
   text-align: end;
