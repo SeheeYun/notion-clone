@@ -2,7 +2,7 @@ import { BaseComponent } from './../baseComponent';
 import { BaseComponentImpl } from '../baseComponent.js';
 
 export interface DialogContent extends BaseComponent {
-  url: string;
+  readonly url: string;
 }
 
 export class ImageDialog
