@@ -11,6 +11,7 @@ import { TextItem } from './components/item/text.js';
 import { TodoItem } from './components/item/todo.js';
 import { VideoItem } from './components/item/video.js';
 import { ItemContainerImpl, Items } from './components/items.js';
+import { TitleItem } from './components/title.js';
 
 type DioalogConstructor = {
   new (): DialogContent;
@@ -21,6 +22,8 @@ type Selector = '#new-image' | '#new-todo' | '#new-text' | '#new-video';
 class App {
   private items;
   constructor(mainRoot: HTMLElement, private dialogRoot: HTMLElement) {
+    const title = new TitleItem();
+    title.attachTo(mainRoot);
     this.items = new Items(ItemContainerImpl);
     this.items.attachTo(mainRoot);
     const dropdown = new Dropdown();
