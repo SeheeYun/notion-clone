@@ -1,12 +1,13 @@
+import { BaseComponent } from './../baseComponent';
 import { BaseComponentImpl } from '../baseComponent.js';
 
-interface Content {
-  getUrl(): string;
+export interface DialogContent extends BaseComponent {
+  url: string;
 }
 
 export class ImageDialog
   extends BaseComponentImpl<HTMLElement>
-  implements Content
+  implements DialogContent
 {
   constructor() {
     super(`
@@ -17,16 +18,13 @@ export class ImageDialog
  `);
   }
 
-  getUrl() {
+  get url(): string {
     const url = this.element.querySelector('input')!.value;
     return url;
   }
 }
 
-export class VieoDialog
-  extends BaseComponentImpl<HTMLElement>
-  implements Content
-{
+export class VideoDialog extends BaseComponentImpl<HTMLElement> {
   constructor() {
     super(`
     <div class="dialog__content">
@@ -36,7 +34,7 @@ export class VieoDialog
  `);
   }
 
-  getUrl() {
+  get url(): string {
     const url = this.element.querySelector('input')!.value;
     return url;
   }

@@ -1,7 +1,7 @@
 import { BaseComponentImpl } from '../baseComponent.js';
 
 export class ImageItem extends BaseComponentImpl<HTMLElement> {
-  constructor(src: string) {
+  constructor(url: string) {
     super(`
       <div class="image">
         <img />
@@ -9,7 +9,7 @@ export class ImageItem extends BaseComponentImpl<HTMLElement> {
     `);
 
     const img = this.element.querySelector('.image>img')! as HTMLImageElement;
-    img.src = src;
-    img.alt = src;
+    img.src = url;
+    img.alt = url;
   }
 }
