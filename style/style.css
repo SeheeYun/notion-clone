@@ -164,6 +164,11 @@ button {
   outline: none;
 }
 
+.image img {
+  width: 100%;
+  text-align: center;
+}
+
 /* dialog */
 .dialog__bg {
   position: fixed;

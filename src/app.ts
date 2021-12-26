@@ -73,5 +73,3 @@ new App(
   document.querySelector('.main__content')!,
   document.querySelector('#app')!
 );
-
-// https://picsum.photos/400/250

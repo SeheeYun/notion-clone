@@ -24,7 +24,10 @@ export class ImageDialog
   }
 }
 
-export class VideoDialog extends BaseComponentImpl<HTMLElement> {
+export class VideoDialog
+  extends BaseComponentImpl<HTMLElement>
+  implements DialogContent
+{
   constructor() {
     super(`
     <div class="dialog__content">
