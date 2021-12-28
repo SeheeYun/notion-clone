@@ -8,7 +8,7 @@ export class TitleItem extends BaseComponentImpl<HTMLElement> {
       contenteditable="true"
       spellcheck="true"
       placeholder="제목 없음"
-    ></div>
+    >TypeScript</div>
  `);
 
     const mainHeader = document.querySelector(

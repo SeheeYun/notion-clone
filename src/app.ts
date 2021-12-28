@@ -41,6 +41,13 @@ class App {
       VideoDialog,
       VideoDialog => new VideoItem(VideoDialog!.url)
     );
+
+    // dummy content
+    this.items.addChild(new TextItem());
+    this.items.addChild(new TextItem());
+    this.items.addChild(new ImageItem('https://picsum.photos/400/250'));
+    this.items.addChild(new ImageItem('https://picsum.photos/400/250'));
+    this.items.addChild(new VideoItem('https://youtu.be/j0wR3L_fATs'));
   }
 
   private setAddItemListener(

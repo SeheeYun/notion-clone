@@ -1,6 +1,7 @@
 export interface BaseComponent {
   attachTo(parent: HTMLElement, position?: InsertPosition): void;
   removeFrom(parent: HTMLElement): void;
+  attach(component: BaseComponent, position?: InsertPosition): void;
 }
 
 export class BaseComponentImpl<T extends HTMLElement> implements BaseComponent {
@@ -20,5 +21,9 @@ export class BaseComponentImpl<T extends HTMLElement> implements BaseComponent {
       throw new Error('Parent mismatch.');
     }
     parent.removeChild(this.element);
+  }
+
+  attach(component: BaseComponent, position?: InsertPosition) {
+    component.attachTo(this.element, position);
   }
 }

@@ -165,7 +165,13 @@ button {
 }
 
 .image img {
-  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+.video {
   text-align: center;
 }
 
@@ -205,4 +211,9 @@ button {
   color: var(--primary-color);
   padding: 0 10px;
   font-weight: bold;
+}
+
+/* drag and drop */
+.drag-ul .drag {
+  background-color: #3b47ec8f;
 }
