@@ -16,17 +16,16 @@ import { TitleItem } from './components/title.js';
 type DioalogConstructor = {
   new (): DialogContent;
 };
-
 type Selector = '#new-image' | '#new-todo' | '#new-text' | '#new-video';
 
 class App {
   private items;
   constructor(mainRoot: HTMLElement, private dialogRoot: HTMLElement) {
-    const title = new TitleItem();
-    title.attachTo(mainRoot);
     this.items = new Items(ItemContainerImpl);
-    this.items.attachTo(mainRoot);
+    const title = new TitleItem();
     const dropdown = new Dropdown();
+    title.attachTo(mainRoot);
+    this.items.attachTo(mainRoot);
     dropdown.attachTo(mainRoot);
 
     this.setAddItemListener('#new-text', null, () => new TextItem());
@@ -44,8 +43,7 @@ class App {
 
     // dummy content
     this.items.addChild(new TextItem());
-    this.items.addChild(new TextItem());
-    this.items.addChild(new ImageItem('https://picsum.photos/400/250'));
+    this.items.addChild(new TodoItem());
     this.items.addChild(new ImageItem('https://picsum.photos/400/250'));
     this.items.addChild(new VideoItem('https://youtu.be/j0wR3L_fATs'));
   }

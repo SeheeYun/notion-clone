@@ -5,21 +5,15 @@ export interface Composable {
 }
 
 type OnRemoveLinstener = () => void;
-
 type DragState = 'start' | 'end' | 'enter';
-
-type DragStateListener<T extends BaseComponent> = (
-  target: T,
-  state: DragState
-) => void;
-
+type OnDragStateListener = (target: ItemContainer, state: DragState) => void;
 type ItemContainerConstructor = {
   new (): ItemContainer;
 };
 
 interface ItemContainer extends BaseComponent, Composable {
   setOnRemoveLinstener(listener: OnRemoveLinstener): void;
-  setDragStateListener(listener: DragStateListener<ItemContainer>): void;
+  setOnDragStateListener(listener: OnDragStateListener): void;
   getBoundingRect(): DOMRect;
   toggleClass(): void;
 }
@@ -29,11 +23,12 @@ export class ItemContainerImpl
   implements ItemContainer
 {
   private removeListener?: OnRemoveLinstener;
-  private dragStateListener?: DragStateListener<ItemContainer>;
+  private dragStateListener?: OnDragStateListener;
   constructor() {
     super(`<li class="item" draggable="true">
       <button class="delete-button">✖️</button>
     </li>`);
+
     const deleteBtn = this.element.querySelector(
       '.delete-button'
     )! as HTMLButtonElement;
@@ -60,7 +55,7 @@ export class ItemContainerImpl
     this.removeListener = listener;
   }
 
-  setDragStateListener(listener: DragStateListener<ItemContainer>) {
+  setOnDragStateListener(listener: OnDragStateListener) {
     this.dragStateListener = listener;
   }
 
@@ -77,8 +72,10 @@ export class ItemContainerImpl
   }
 }
 
-export class Items extends BaseComponentImpl<HTMLUListElement> {
-  private children = new Set<ItemContainer>();
+export class Items
+  extends BaseComponentImpl<HTMLUListElement>
+  implements Composable
+{
   private dragTarget?: ItemContainer;
   private dropTarget?: ItemContainer;
 
@@ -86,33 +83,30 @@ export class Items extends BaseComponentImpl<HTMLUListElement> {
     super(`<ul class="items"></ul>`);
 
     this.element.addEventListener('dragover', e => {
-      this.onDragOver(e);
+      e.preventDefault();
     });
     this.element.addEventListener('drop', e => {
+      e.preventDefault();
       this.onDrop(e);
     });
   }
 
-  onDragOver(e: DragEvent) {
-    e.preventDefault();
-  }
-  onDrop(e: DragEvent) {
-    e.preventDefault();
+  private onDrop(e: DragEvent) {
     if (!this.dropTarget) {
       return;
     }
     if (this.dragTarget && this.dragTarget !== this.dropTarget) {
       const dropY = e.clientY;
-      const srcElement = this.dragTarget.getBoundingRect();
+      const dragY = this.dragTarget.getBoundingRect().y;
       this.dragTarget.removeFrom(this.element);
       this.dropTarget.attach(
         this.dragTarget,
-        dropY < srcElement.y ? 'beforebegin' : 'afterend'
+        dropY < dragY ? 'beforebegin' : 'afterend'
       );
     }
   }
 
-  removeClass() {
+  private removeClass() {
     this.element
       .querySelectorAll('.item')
       .forEach(item => item.classList.remove('drop'));
@@ -124,10 +118,8 @@ export class Items extends BaseComponentImpl<HTMLUListElement> {
     item.attachTo(this.element);
     item.setOnRemoveLinstener(() => {
       item.removeFrom(this.element);
-      this.children.delete(item);
     });
-    this.children.add(item);
-    item.setDragStateListener((target: ItemContainer, state: DragState) => {
+    item.setOnDragStateListener((target: ItemContainer, state: DragState) => {
       switch (state) {
         case 'start':
           this.dragTarget = target;
