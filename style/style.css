@@ -214,6 +214,6 @@ button {
 }
 
 /* drag and drop */
-.drag-ul .drag {
+.drop {
   background-color: #3b47ec8f;
 }

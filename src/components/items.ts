@@ -21,6 +21,7 @@ interface ItemContainer extends BaseComponent, Composable {
   setOnRemoveLinstener(listener: OnRemoveLinstener): void;
   setDragStateListener(listener: DragStateListener<ItemContainer>): void;
   getBoundingRect(): DOMRect;
+  toggleClass(): void;
 }
 
 export class ItemContainerImpl
@@ -70,6 +71,10 @@ export class ItemContainerImpl
   getBoundingRect(): DOMRect {
     return this.element.getBoundingClientRect();
   }
+
+  toggleClass() {
+    this.element.classList.toggle('drop');
+  }
 }
 
 export class Items extends BaseComponentImpl<HTMLUListElement> {
@@ -107,6 +112,12 @@ export class Items extends BaseComponentImpl<HTMLUListElement> {
     }
   }
 
+  removeClass() {
+    this.element
+      .querySelectorAll('.item')
+      .forEach(item => item.classList.remove('drop'));
+  }
+
   addChild(child: BaseComponent) {
     const item = new this.itemConstructor();
     item.addChild(child);
@@ -123,9 +134,13 @@ export class Items extends BaseComponentImpl<HTMLUListElement> {
           break;
         case 'end':
           this.dragTarget = undefined;
+          this.dropTarget?.toggleClass();
+          this.dropTarget = undefined;
           break;
         case 'enter':
+          this.removeClass();
           this.dropTarget = target;
+          this.dropTarget.toggleClass();
           break;
         default:
           throw new Error(`잘못된 state:${state}  입니다.`);
